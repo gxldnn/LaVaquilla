@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apto. en Roda de Berà - LaVaquilla</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-house"></i></p></span>
+                    <span class="logo-text">LaVaquilla</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="apartamentos.html" class="nav-link">Apartamentos</a></li>
+                <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Back to Apartments -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="apartamentos.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Volver a Apartamentos
+            </a>
+        </div>
+    </div>
+
+    <!-- Apartment Detail -->
+    <section class="apartment-detail">
+        <div class="container">
+            <div class="apartment-header">
+                <h1>Apto. en Roda de Berà</h1>
+                <p class="apartment-subtitle">Alojamiento entero: apartamento en Roda de Berà, España.</p>
+            </div>
+
+            <!-- Image Gallery Grid -->
+            <div class="image-gallery">
+                <div class="gallery-grid">
+                    <div class="gallery-item gallery-main-item" onclick="openImageModal(0)">
+                        <img src="images/2/main.jpg" alt="Apto. en Roda de Berà - Principal">
+                    </div>
+                    <div class="gallery-item" onclick="openImageModal(1)">
+                        <img src="images/2/1.jpg" alt="Apto. en Roda de Berà - Sala">
+                    </div>
+                    <div class="gallery-item" onclick="openImageModal(2)">
+                        <img src="images/2/2.jpg" alt="Apto. en Roda de Berà - Dormitorio 1">
+                    </div>
+                    <div class="gallery-item" onclick="openImageModal(3)">
+                        <img src="images/2/3.jpg" alt="Apto. en Roda de Berà - Dormitorio 2">
+                    </div>
+                    <div class="gallery-item" onclick="openImageModal(4)">
+                        <img src="images/2/4.jpg" alt="Apto. en Roda de Berà - Cocina">
+                    </div>
+                    <div class="gallery-item" onclick="openImageModal(5)">
+                        <img src="images/2/5.jpg" alt="Apto. en Roda de Berà - Terraza">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apartment Info -->
+            <div class="apartment-info">
+                <div class="apartment-content">
+                    <div class="apartment-characteristics">
+                        <h2>Características</h2>
+                        
+                        <div class="characteristics-grid">
+                            <div class="char-section">
+                                <h3>Especificaciones</h3>
+                                <div class="char-item">
+                                    <i class="fas fa-bed"></i>
+                                    <span>2 dormitorios</span>
+                                </div>
+                                <div class="char-item">
+                                    <i class="fas fa-bath"></i>
+                                    <span>1 baño</span>
+                                </div>
+                                <div class="char-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>3 camas</span>
+                                </div>
+                                <div class="char-item">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>50 m²</span>
+                                </div>
+                            </div>
+
+                            <div class="char-section">
+                                <h3>Comodidades</h3>
+                                <div class="char-item">
+                                    <i class="fas fa-parking"></i>
+                                    <span>Aparcamiento gratuito</span>
+                                </div>
+                                <div class="char-item">
+                                    <i class="fas fa-wheelchair"></i>
+                                    <span>Accesible para discapacitados</span>
+                                </div>
+                                <div class="char-item">
+                                    <i class="fas fa-snowflake"></i>
+                                    <span>Aire acondicionado</span>
+                                </div>
+                                <div class="char-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Cocina equipada</span>
+                                </div>
+                            </div>
+
+                            <div class="char-section">
+                                <h3>No Permitido</h3>
+                                <div class="char-item not-allowed">
+                                    <i class="fas fa-ban"></i>
+                                    <span>No se permiten mascotas</span>
+                                </div>
+                                <div class="char-item not-allowed">
+                                    <i class="fas fa-smoking-ban"></i>
+                                    <span>Prohibido fumar</span>
+                                </div>
+                                <div class="char-item not-allowed">
+                                    <i class="fas fa-volume-mute"></i>
+                                    <span>No se permiten fiestas</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="apartment-actions">
+                            <a href="contacto.html" class="btn btn-primary">Contactar para más información</a>
+                            <button class="btn btn-primary" onclick="openDescriptionModal()">
+                                <i class="fas fa-info-circle"></i> Descripción Completa
+                            </button>
+                            <a href="apartamentos.html" class="btn btn-primary-s ml-auto">Ver más apartamentos</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="modal-close" onclick="closeImageModal()">&times;</span>
+            <div class="modal-gallery">
+                <div class="gallery-carousel">
+                    <div class="gallery-carousel-inner">
+                        <img id="modalImage" src="images/2/main.jpg" alt="Apartamento">
+                        <button class="carousel-btn carousel-prev" onclick="modalChangeImage(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn carousel-next" onclick="modalChangeImage(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="close-carousel" onclick="closeImageModal()"> ✕ Cerrar</button>
+                    </div>
+                </div>
+                <div class="gallery-dots"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Description Modal -->
+    <div id="descriptionModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeDescriptionModal()">&times;</span>
+            <h2>Apartamento Roda de Berà - Descripción Completa</h2>
+            <div class="modal-description">
+                <p>Bienvenido a este cómodo apartamento de dos habitaciones, ideal para familias o grupos que buscan una estancia agradable cerca de la costa. Aquí puede relajarse y disfrutar de actividades al aire libre.</p>
+
+                <p>– Capacidad para 5 personas<br>
+                – Estacionamiento incluido<br>
+                – Accesible para discapacitados</p>
+
+                <h3>El espacio</h3>
+                <p>Bienvenido a este cómodo apartamento de dos habitaciones, ideal para familias o grupos que buscan una estancia agradable cerca de la costa. Aquí puede relajarse y disfrutar de actividades al aire libre.</p>
+
+                <p>– Capacidad para 5 personas<br>
+                – Estacionamiento incluido<br>
+                – Accesible para discapacitados</p>
+
+                <h3>Exterior :</h3>
+                <p>El apartamento cuenta con un encantador jardín no cerrado, donde puede relajarse en las tumbonas o disfrutar de un juego en las canchas de voleibol o tenis. Para más relajación, la terraza ofrece el lugar perfecto para disfrutar de la puesta de sol. Este es el lugar ideal para jugar y descansar.</p>
+
+                <h3>Salas de estar :</h3>
+                <p>Esta amplia y acogedora sala de estar es perfecta para reunir a amigos y familiares. Encontrará un cómodo sofá y una mesa de comedor para disfrutar de comidas juntos. Con aire acondicionado y comodidades modernas, los espacios son tanto acogedores como prácticos.</p>
+
+                <h3>Dormitorios y Baños :</h3>
+                <p>– 1 dormitorio con cama de matrimonio y cama individual<br>
+                – 1 dormitorio con cama de matrimonio<br>
+                – 1 baño con ducha y aseo</p>
+
+                <h3>Lugares de interés cercanos:</h3>
+                <p>Roda de Berà ofrece muchas actividades para enriquecer tu estancia. A pocos minutos, descubre la playa de Punta d'en Guineu para días de natación y descanso. Visita el famoso Arco de Berà, un monumento histórico romano. Para los amantes del senderismo, el Parque Natural de la Serra de Montmell ofrece rutas pintorescas.</p>
+
+                <h3>Acceso:</h3>
+                <p>Roda de Berà es fácilmente accesible en coche, a solo 30 minutos de Tarragona y a una hora de Barcelona. Si viajas en tren, la estación más cercana es Sant Vicenç de Calders, a 20 minutos en coche. El aeropuerto de Reus se encuentra a unos 35 minutos en coche.</p>
+
+                <h3>Información adicional:</h3>
+                <p>- Limpieza, toallas y sábanas incluidas<br>
+                - Impuesto turístico: 1 euro por persona y noche<br>
+                - Aparcamiento en el lugar incluido<br>
+                - Prohibido fumar en el interior<br>
+                - No se permiten mascotas</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <span class="logo-text white">Contacto</i></span><br>
+                    <p><i class="fas fa-phone"></i> +34 123 456 789</p>
+                    <p><i class="fas fa-envelope"></i> contacto@lavaquilla.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LaVaquilla. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Image gallery for apartment 2
+        const apartment2Images = [
+            'images/2/main.jpg',
+            'images/2/1.jpg',
+            'images/2/2.jpg',
+            'images/2/3.jpg',
+            'images/2/4.jpg',
+            'images/2/5.jpg',
+            'images/2/6.jpg',
+            'images/2/7.jpg',
+            'images/2/8.jpg',
+            'images/2/9.jpg',
+            'images/2/10.jpg',
+            'images/2/11.jpg',
+            'images/2/12.jpg',
+            'images/2/13.jpg',
+            'images/2/14.jpg',
+            'images/2/15.jpg',
+            'images/2/16.jpg',
+            'images/2/17.jpg',
+            'images/2/18.jpg',
+            'images/2/19.jpg',
+            'images/2/20.jpg',
+            'images/2/21.jpg',
+            'images/2/22.jpg',
+            'images/2/23.jpg',
+            'images/2/24.jpg',
+            'images/2/25.jpg',
+            'images/2/26.jpg',
+            'images/2/27.jpg',
+            'images/2/28.jpg'
+        ];
+        initializeApartmentGallery(apartment2Images);
+    </script>
+</body>
+</html>
