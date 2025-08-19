@@ -8,6 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="page-wrapper">
     <!-- Navigation Header -->
     <header class="header">
         <nav class="nav">
@@ -30,17 +31,18 @@
         </nav>
     </header>
 
-    <!-- Back to Apartments -->
-    <div class="breadcrumb">
-        <div class="container">
-            <a href="apartamentos.html" class="back-link">
-                <i class="fas fa-arrow-left"></i> Volver a Apartamentos
-            </a>
+    <div class="main-content">
+        <!-- Back to Apartments -->
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="apartamentos.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Volver a Apartamentos
+                </a>
+            </div>
         </div>
-    </div>
 
-    <!-- Apartment Detail -->
-    <section class="apartment-detail">
+        <!-- Apartment Detail -->
+        <section class="apartment-detail">
         <div class="container">
             <div class="apartment-header">
                 <h1 id="building-title">Edificio en La Ràpita</h1>
@@ -111,6 +113,7 @@
             </div>
         </div>
     </section>
+    </div>
 
     <!-- Image Modal -->
     <div id="imageModal" class="modal">
@@ -140,7 +143,7 @@
             <span class="modal-close" onclick="closeDescriptionModal()">&times;</span>
             <h2 id="modal-title">Edificio en La Ràpita - Piso 1</h2>
             <div class="modal-description" id="modal-description-content">
-                asdasdadasd
+                <!-- Content will be dynamically updated -->
             </div>
         </div>
     </div>
@@ -169,5 +172,6 @@
             selectFloor(1); // Start with floor 1
         });
     </script>
+    </div>
 </body>
 </html>

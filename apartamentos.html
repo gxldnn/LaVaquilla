@@ -8,12 +8,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="page-wrapper">
     <!-- Navigation Header -->
     <header class="header">
         <nav class="nav">
             <div class="nav-brand">
                 <div class="logo">
-                    <span class="logo-icon"><i class="fa-solid fa-house"></i></p></span>
+                    <span class="logo-icon"><i class="fa-solid fa-house"></i></span>
                     <span class="logo-text">LaVaquilla</span>
                 </div>
             </div>
@@ -30,37 +31,43 @@
         </nav>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Nuestros Apartamentos</h1>
-            <p>Descubre todos nuestros apartamentos disponibles</p>
-        </div>
-    </section>
+    <div class="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Nuestros Apartamentos</h1>
+                <p>Descubre todos nuestros apartamentos disponibles</p>
+            </div>
+        </section>
 
-    <!-- Apartments Grid -->
-    <section class="apartments-listing">
+        <!-- Apartments Grid -->
+        <section class="apartments-listing">
         <div class="container">
             <div class="apartments-grid">
-                <!-- Apartment 1 -->
+                <!-- Building with 3 floors -->
                 <div class="apartment-card">
                     <div class="apartment-image">
-                        <img src="images/1/main.jpg" alt="Apartamento en La Ràpita">
-                        <div class="apartment-size">30 m²</div>
+                        <img src="images/main.jpg" alt="Edificio en La Ràpita">
+                        <div class="apartment-size">3 Plantas</div>
+                        <div class="building-floors">
+                            <span class="floor-indicator">
+                                <i class="fas fa-building"></i> 3 Pisos
+                            </span>
+                        </div>
                     </div>
                     <div class="apartment-content">
-                        <h3 class="apartment-title">Apartamento en La Ràpita</h3>
-                        <p class="apartment-location">Alojamiento entero: apartamento en Sant Carles de la Ràpita, España.</p>
+                        <h3 class="apartment-title">Edificio en La Ràpita</h3>
+                        <p class="apartment-location">Edificio completo con 3 plantas en Sant Carles de la Ràpita, España.</p>
                         
                         <div class="apartment-specs">
                             <span class="spec">
-                                <i class="fas fa-bed"></i> 1 dorm.
+                                <i class="fas fa-bed"></i> 3 dorm. total
                             </span>
                             <span class="spec">
-                                <i class="fas fa-bath"></i> 1 baño
+                                <i class="fas fa-bath"></i> 3 baños
                             </span>
                             <span class="spec">
-                                <i class="fas fa-users"></i> 2 camas
+                                <i class="fas fa-users"></i> 6 camas
                             </span>
                         </div>
                         
@@ -69,11 +76,14 @@
                                 <i class="fas fa-eye"></i> Vista a la ciudad
                             </span>
                             <span class="amenity">
-                                <i class="fas fa-building"></i> Balcón privado
+                                <i class="fas fa-building"></i> Balcones privados
+                            </span>
+                            <span class="amenity">
+                                <i class="fas fa-stairs"></i> 3 plantas independientes
                             </span>
                         </div>
                         
-                        <a href="apartamento1.html" class="btn btn-secondary">Ver Detalles</a>
+                        <a href="apartamento1.html" class="btn btn-secondary">Ver Detalles del Edificio</a>
                     </div>
                 </div>
 
@@ -149,13 +159,14 @@
             </div>
         </div>
     </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-contact">
-                    <span class="logo-text white">Contacto</i></span><br>
+                    <span class="logo-text white">Contacto</span><br>
                     <p><i class="fas fa-phone"></i> +34 123 456 789</p>
                     <p><i class="fas fa-envelope"></i> contacto@lavaquilla.com</p>
                 </div>
@@ -167,5 +178,6 @@
     </footer>
 
     <script src="script.js"></script>
+    </div>
 </body>
 </html>
