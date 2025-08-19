@@ -442,7 +442,7 @@ const apartment3Images = [
     'images/3/12.jpg',
     'images/3/13.jpg',
     'images/3/14.jpg',
-    'images/3/15.jpg'
+    'images/3/16.jpg'
 ];
 
 // Initialize apartment3 gallery if on apartamento3.html
