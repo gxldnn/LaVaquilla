@@ -1,753 +1,453 @@
-/**
- * LaVaquilla Apartment Rental Website JavaScript
- * Handles navigation, image galleries, modals, and interactive features
- */
-
-// Global variables for image gallery management
-let currentImages = [];
-let currentImageIndex = 0;
-let currentFloor = 1;
-
-// Building data for different floors
+// Building data for apartamento1.html (3-floor building)
 const buildingData = {
     1: {
         title: "Edificio en La Ràpita - Piso 1",
-        subtitle: "Primera planta del edificio en Sant Carles de la Ràpita, España",
+        subtitle: "Primera planta del edificio en Sant Carles de la Ràpita",
         images: [
-            "images/1/main.jpg",
-            "images/1/1.jpg",
-            "images/1/2.jpg",
-            "images/1/3.jpg",
-            "images/1/4.jpg",
-            "images/1/5.jpg"
+            'images/1/main.jpg',
+            'images/1/1.jpg',
+            'images/1/2.jpg',
+            'images/1/3.jpg',
+            'images/1/4.jpg',
+            'images/1/5.jpg',
+            'images/1/6.jpg',
+            'images/1/7.jpg',
+            'images/1/8.jpg',
+            'images/1/9.jpg',
+            'images/1/10.jpg'
         ],
         characteristics: {
-            specs: [
-                { icon: "fas fa-bed", text: "1 dormitorio" },
-                { icon: "fas fa-bath", text: "1 baño" },
-                { icon: "fas fa-users", text: "2 camas" },
-                { icon: "fas fa-ruler-combined", text: "35 m²" }
-            ],
-            amenities: [
-                { icon: "fas fa-eye", text: "Vista a la calle" },
-                { icon: "fas fa-building", text: "Balcón pequeño" },
-                { icon: "fas fa-utensils", text: "Cocina básica" },
-                { icon: "fas fa-snowflake", text: "Aire acondicionado" }
-            ],
-            restrictions: [
-                { icon: "fas fa-ban", text: "No se permiten mascotas" },
-                { icon: "fas fa-smoking-ban", text: "Prohibido fumar" },
-                { icon: "fas fa-volume-mute", text: "No se permiten fiestas" }
-            ]
+            bedrooms: 1,
+            bathrooms: 1,
+            beds: 2,
+            size: "30 m²"
         },
+        amenities: [
+            { icon: "fas fa-eye", text: "Vista a la ciudad" },
+            { icon: "fas fa-building", text: "Balcón privado" },
+            { icon: "fas fa-snowflake", text: "Aire acondicionado" },
+            { icon: "fas fa-utensils", text: "Cocina equipada" }
+        ],
         description: `
-            <p>Piso 1 - Planta baja con acceso directo. Perfecto para quienes buscan comodidad sin escaleras. Vista directa a la calle principal de La Ràpita.</p>
+            <p>Bienvenido al primer piso de nuestro edificio en La Ràpita. Este acogedor apartamento ofrece todas las comodidades necesarias para una estancia perfecta.</p>
+            
+            <h3>El espacio</h3>
+            <p>Este apartamento de 30 m² cuenta con un dormitorio cómodo, un baño completo y una cocina equipada. El balcón privado ofrece vistas encantadoras de la ciudad.</p>
+            
+            <h3>Comodidades</h3>
             <ul>
-                <li>Acceso directo desde la calle</li>
-                <li>Vista a la vida urbana de la ciudad</li>
-                <li>Balcón con vista a los transeúntes</li>
+                <li>Aire acondicionado para máximo confort</li>
+                <li>Cocina totalmente equipada</li>
+                <li>Balcón privado con vistas a la ciudad</li>
+                <li>Ubicación céntrica en Sant Carles de la Ràpita</li>
             </ul>
-
-            <h3>Distribución Piso 1</h3>
-            <p>Apartamento cómodo y funcional en planta baja. Sala de estar integrada con cocina, dormitorio principal con cama doble y baño completo con ducha.</p>
-            <ul>
-                <li>Sala-comedor con cocina americana</li>
-                <li>1 dormitorio con cama doble</li>
-                <li>1 baño completo con ducha</li>
-            </ul>
-
-            <h3>Características Especiales Piso 1</h3>
-            <p>Ideal para personas con movilidad reducida o que prefieren evitar escaleras. Fácil acceso con equipaje. Conexión directa con la energía de la calle.</p>
         `
     },
     2: {
         title: "Edificio en La Ràpita - Piso 2",
-        subtitle: "Segunda planta del edificio en Sant Carles de la Ràpita, España",
+        subtitle: "Segunda planta del edificio en Sant Carles de la Ràpita",
         images: [
-            "images/2/main.jpg",
-            "images/2/1.jpg",
-            "images/2/2.jpg",
-            "images/2/3.jpg",
-            "images/2/4.jpg",
-            "images/2/5.jpg"
+            'images/2/main.jpg',
+            'images/2/1.jpg',
+            'images/2/2.jpg',
+            'images/2/3.jpg',
+            'images/2/4.jpg',
+            'images/2/5.jpg',
+            'images/2/6.jpg',
+            'images/2/7.jpg',
+            'images/2/8.jpg',
+            'images/2/9.jpg',
+            'images/2/10.jpg',
+            'images/2/11.jpg'
         ],
         characteristics: {
-            specs: [
-                { icon: "fas fa-bed", text: "2 dormitorios" },
-                { icon: "fas fa-bath", text: "2 baños" },
-                { icon: "fas fa-users", text: "4 camas" },
-                { icon: "fas fa-ruler-combined", text: "55 m²" }
-            ],
-            amenities: [
-                { icon: "fas fa-mountain", text: "Vistas elevadas" },
-                { icon: "fas fa-building", text: "Balcón amplio" },
-                { icon: "fas fa-utensils", text: "Cocina completa" },
-                { icon: "fas fa-snowflake", text: "Aire acondicionado doble" }
-            ],
-            restrictions: [
-                { icon: "fas fa-ban", text: "No se permiten mascotas" },
-                { icon: "fas fa-smoking-ban", text: "Prohibido fumar" },
-                { icon: "fas fa-volume-mute", text: "No se permiten fiestas" }
-            ]
+            bedrooms: 2,
+            bathrooms: 1,
+            beds: 3,
+            size: "45 m²"
         },
+        amenities: [
+            { icon: "fas fa-eye", text: "Vista panorámica" },
+            { icon: "fas fa-building", text: "Balcón amplio" },
+            { icon: "fas fa-snowflake", text: "Aire acondicionado" },
+            { icon: "fas fa-utensils", text: "Cocina equipada" }
+        ],
         description: `
-            <p>Piso 2 - Primera planta elevada. Apartamento más espacioso con 2 dormitorios y 2 baños. Perfecto para familias o grupos de hasta 4 personas.</p>
+            <p>El segundo piso ofrece más espacio y mejores vistas. Ideal para familias pequeñas o grupos que buscan comodidad y ubicación privilegiada.</p>
+            
+            <h3>El espacio</h3>
+            <p>Con 45 m² de superficie, este apartamento cuenta con dos dormitorios, un baño completo y una cocina equipada. El balcón amplio ofrece vistas panorámicas excepcionales.</p>
+            
+            <h3>Comodidades</h3>
             <ul>
-                <li>Vistas mejoradas desde altura</li>
-                <li>Mayor privacidad y menos ruido</li>
-                <li>Balcón más amplio con mejores vistas</li>
+                <li>Dos dormitorios cómodos</li>
+                <li>Balcón amplio con vistas panorámicas</li>
+                <li>Aire acondicionado en todas las habitaciones</li>
+                <li>Cocina completamente equipada</li>
             </ul>
-
-            <h3>Distribución Piso 2</h3>
-            <p>Apartamento familiar con distribución optimizada. Dos dormitorios independientes, cada uno con su propio baño, sala de estar amplia y cocina completamente equipada.</p>
-            <ul>
-                <li>Dormitorio principal con cama doble y baño en suite</li>
-                <li>Dormitorio secundario con dos camas individuales</li>
-                <li>Baño adicional completo</li>
-                <li>Sala-comedor independiente de la cocina</li>
-            </ul>
-
-            <h3>Características Especiales Piso 2</h3>
-            <p>El piso más versátil del edificio. Ideal para familias, grupos de amigos o estancias largas. Doble aire acondicionado para mayor confort en ambos dormitorios.</p>
         `
     },
     3: {
         title: "Edificio en La Ràpita - Piso 3",
-        subtitle: "Tercera planta del edificio en Sant Carles de la Ràpita, España",
+        subtitle: "Tercera planta del edificio en Sant Carles de la Ràpita",
         images: [
-            "images/3/main.jpg",
-            "images/3/1.jpg",
-            "images/3/2.jpg",
-            "images/3/3.jpg",
-            "images/3/4.jpg",
-            "images/3/5.jpg"
+            'images/3/main.jpg',
+            'images/3/1.jpg',
+            'images/3/2.jpg',
+            'images/3/3.jpg',
+            'images/3/4.jpg',
+            'images/3/5.jpg',
+            'images/3/6.jpg',
+            'images/3/7.jpg',
+            'images/3/8.jpg',
+            'images/3/9.jpg',
+            'images/3/10.jpg',
+            'images/3/11.jpg',
+            'images/3/12.jpg'
         ],
         characteristics: {
-            specs: [
-                { icon: "fas fa-bed", text: "1 dormitorio suite" },
-                { icon: "fas fa-bath", text: "1 baño luxury" },
-                { icon: "fas fa-users", text: "2 camas premium" },
-                { icon: "fas fa-ruler-combined", text: "45 m² + terraza" }
-            ],
-            amenities: [
-                { icon: "fas fa-crown", text: "Vistas panorámicas 360°" },
-                { icon: "fas fa-sun", text: "Terraza privada 20m²" },
-                { icon: "fas fa-utensils", text: "Cocina gourmet" },
-                { icon: "fas fa-hot-tub", text: "Hidromasaje privado" }
-            ],
-            restrictions: [
-                { icon: "fas fa-ban", text: "No se permiten mascotas" },
-                { icon: "fas fa-smoking-ban", text: "Prohibido fumar en interior" },
-                { icon: "fas fa-volume-mute", text: "Horarios de silencio" }
-            ]
+            bedrooms: 2,
+            bathrooms: 2,
+            beds: 4,
+            size: "55 m²"
         },
+        amenities: [
+            { icon: "fas fa-eye", text: "Vista superior" },
+            { icon: "fas fa-building", text: "Terraza privada" },
+            { icon: "fas fa-snowflake", text: "Aire acondicionado" },
+            { icon: "fas fa-utensils", text: "Cocina equipada" }
+        ],
         description: `
-            <p>Piso 3 - ÁTICO PREMIUM. La joya del edificio con terraza privada, vistas panorámicas y acabados de lujo. Experiencia única en La Ràpita.</p>
+            <p>La tercera planta es el piso más espacioso del edificio, con las mejores vistas y una terraza privada. Perfecto para estancias más largas.</p>
+            
+            <h3>El espacio</h3>
+            <p>Este apartamento de 55 m² es el más amplio del edificio, con dos dormitorios, dos baños completos y una terraza privada con vistas superiores de la ciudad.</p>
+            
+            <h3>Comodidades</h3>
             <ul>
-                <li>Terraza privada de 20m² con mobiliario de exterior</li>
-                <li>Vistas panorámicas de 360° de la ciudad y el mar</li>
-                <li>Hidromasaje privado en la terraza</li>
-                <li>Acabados premium en todo el apartamento</li>
+                <li>Dos dormitorios amplios</li>
+                <li>Dos baños completos</li>
+                <li>Terraza privada con las mejores vistas</li>
+                <li>Aire acondicionado central</li>
+                <li>Cocina totalmente equipada</li>
             </ul>
-
-            <h3>Distribución Piso 3 - Ático</h3>
-            <p>Suite de lujo con dormitorio principal amplio, baño con hidromasaje, cocina gourmet y acceso directo a terraza privada. Diseñado para la máxima experiencia de confort.</p>
-            <ul>
-                <li>Suite principal con vestidor y baño luxury</li>
-                <li>Baño con bañera de hidromasaje y ducha independiente</li>
-                <li>Cocina gourmet con electrodomésticos premium</li>
-                <li>Terraza privada con zona de relax y comedor exterior</li>
-            </ul>
-
-            <h3>Características Especiales Piso 3</h3>
-            <p>Experiencia premium exclusiva. Perfecto para luna de miel, aniversarios o ocasiones especiales. Incluye servicio de limpieza diario y amenities de cortesía.</p>
         `
     }
 };
 
-/**
- * Initialize the website when DOM is loaded
- */
-document.addEventListener('DOMContentLoaded', function() {
-    initializeNavigation();
-    initializeModals();
-    initializeBuilding();
-});
+// Global variables for image modal
+let currentImageIndex = 0;
+let currentImageArray = [];
+let modalOpen = false;
 
-/**
- * Navigation functionality
- * Handles mobile menu toggle and active states
- */
-function initializeNavigation() {
+// Navigation functionality
+function initMobileNav() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
     if (navToggle && navMenu) {
-        // Toggle mobile menu
-        navToggle.onclick = function() {
-            if (navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            } else {
-                navMenu.classList.add('active');
-            }
-        };
-        
-        // Close menu when clicking nav links
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.onclick = function() {
-                navMenu.classList.remove('active');
-            };
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
         });
         
-        // Close menu when clicking outside
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
             if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
                 navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
             }
         });
     }
 }
 
-/**
- * Initialize modal functionality
- * Sets up event listeners for modal interactions
- */
-function initializeModals() {
-    // Close modals when clicking outside or on close button
-    window.addEventListener('click', function(event) {
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(modal => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-    });
-    
-    // Close modals with Escape key
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                modal.style.display = 'none';
-            });
-        }
-    });
-}
-
-/**
- * Initialize building data and set up floor navigation
- */
+// Initialize building for apartamento1.html
 function initializeBuilding() {
-    // Initialize with floor 1 data
-    if (buildingData[1]) {
-        currentImages = buildingData[1].images;
-        currentImageIndex = 0;
-        currentFloor = 1;
-    }
+    // This function will be called from apartamento1.html
+    selectFloor(1);
 }
 
-/**
- * Select and display a specific floor
- * @param {number} floor - Floor number (1, 2, or 3)
- */
-function selectFloor(floor) {
-    if (!buildingData[floor]) return;
-
-    currentFloor = floor;
-    const floorData = buildingData[floor];
+// Floor selection for building (apartamento1.html)
+function selectFloor(floorNumber) {
+    if (!buildingData[floorNumber]) return;
     
-    // Update current images
-    currentImages = floorData.images;
-    currentImageIndex = 0;
+    const floor = buildingData[floorNumber];
     
-    // Update page title and subtitle
+    // Update active floor button
+    document.querySelectorAll('.floor-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`[data-floor="${floorNumber}"]`).classList.add('active');
+    
+    // Update title and subtitle
     const titleElement = document.getElementById('building-title');
     const subtitleElement = document.getElementById('building-subtitle');
-    if (titleElement) titleElement.textContent = floorData.title;
-    if (subtitleElement) subtitleElement.textContent = floorData.subtitle;
-    
-    // Update characteristics title
     const characteristicsTitle = document.getElementById('characteristics-title');
-    if (characteristicsTitle) characteristicsTitle.textContent = `Características - Piso ${floor}`;
+    const modalTitle = document.getElementById('modal-title');
     
-    // Update images in gallery
-    updateGalleryImages();
+    if (titleElement) titleElement.textContent = floor.title;
+    if (subtitleElement) subtitleElement.textContent = floor.subtitle;
+    if (characteristicsTitle) characteristicsTitle.textContent = `Características - Piso ${floorNumber}`;
+    if (modalTitle) modalTitle.textContent = floor.title;
+    
+    // Update main image
+    const mainImage = document.getElementById('mainImage');
+    if (mainImage && floor.images[0]) {
+        mainImage.src = floor.images[0];
+    }
+    
+    // Update gallery grid images (keep only first 6 for preview)
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    galleryItems.forEach((img, index) => {
+        if (floor.images[index]) {
+            img.src = floor.images[index];
+        }
+    });
     
     // Update characteristics
-    updateCharacteristics(floorData.characteristics);
-    
-    // Update floor buttons
-    updateFloorButtons(floor);
-    
-    // Update modal title
-    const modalTitle = document.getElementById('modal-title');
-    if (modalTitle) modalTitle.textContent = floorData.title;
+    updateCharacteristics(floor);
     
     // Update modal description
     const modalDescription = document.getElementById('modal-description-content');
-    if (modalDescription) modalDescription.innerHTML = floorData.description;
-}
-
-/**
- * Update gallery images for current floor
- */
-function updateGalleryImages() {
-    if (currentImages.length === 0) return;
-    
-    // Update main image
-    const mainImage = document.getElementById('mainImage');
-    if (mainImage) {
-        mainImage.src = currentImages[0];
-        mainImage.style.opacity = '0';
-        setTimeout(() => {
-            mainImage.style.opacity = '1';
-        }, 150);
+    if (modalDescription) {
+        modalDescription.innerHTML = floor.description;
     }
     
-    // Update gallery grid images
-    const galleryItems = document.querySelectorAll('.gallery-item img');
-    galleryItems.forEach((img, index) => {
-        if (index < currentImages.length) {
-            img.src = currentImages[index];
-        }
-    });
-    
-    // Update modal image
-    const modalImage = document.getElementById('modalImage');
-    if (modalImage) {
-        modalImage.src = currentImages[0];
-    }
-    
-    // Update dots
-    updateGalleryDots();
+    // Set current floor images for modal carousel (ALL images, not just preview)
+    currentImageArray = [...floor.images];
 }
 
-/**
- * Update characteristics section with floor data
- * @param {Object} characteristics - Floor characteristics data
- */
-function updateCharacteristics(characteristics) {
+// Update characteristics display
+function updateCharacteristics(floor) {
     const characteristicsContent = document.getElementById('characteristics-content');
     if (!characteristicsContent) return;
     
-    let html = '';
+    const char = floor.characteristics;
+    const amenities = floor.amenities;
     
-    // Specifications section
-    html += '<div class="char-section">';
-    html += '<h3>Especificaciones</h3>';
-    characteristics.specs.forEach(spec => {
-        html += `<div class="char-item">
-            <i class="${spec.icon}"></i>
-            <span>${spec.text}</span>
-        </div>`;
-    });
-    html += '</div>';
-    
-    // Amenities section
-    html += '<div class="char-section">';
-    html += '<h3>Comodidades</h3>';
-    characteristics.amenities.forEach(amenity => {
-        html += `<div class="char-item">
-            <i class="${amenity.icon}"></i>
-            <span>${amenity.text}</span>
-        </div>`;
-    });
-    html += '</div>';
-    
-    // Restrictions section
-    html += '<div class="char-section">';
-    html += '<h3>No Permitido</h3>';
-    characteristics.restrictions.forEach(restriction => {
-        html += `<div class="char-item not-allowed">
-            <i class="${restriction.icon}"></i>
-            <span>${restriction.text}</span>
-        </div>`;
-    });
-    html += '</div>';
-    
-    characteristicsContent.innerHTML = html;
-}
-
-/**
- * Update floor button active states
- * @param {number} activeFloor - Currently active floor
- */
-function updateFloorButtons(activeFloor) {
-    const floorButtons = document.querySelectorAll('.floor-btn');
-    floorButtons.forEach(button => {
-        const floor = parseInt(button.getAttribute('data-floor'));
-        if (floor === activeFloor) {
-            button.classList.add('active');
-        } else {
-            button.classList.remove('active');
-        }
-    });
-}
-
-/**
- * Initialize apartment gallery with provided images
- * @param {Array} images - Array of image paths for the gallery
- */
-function initializeApartmentGallery(images) {
-    currentImages = images;
-    currentImageIndex = 0;
-    
-    // Update main image
-    const mainImage = document.getElementById('mainImage');
-    if (mainImage && images.length > 0) {
-        mainImage.src = images[0];
-    }
-    
-    // Update modal image
-    const modalImage = document.getElementById('modalImage');
-    if (modalImage && images.length > 0) {
-        modalImage.src = images[0];
-    }
-    
-    // Update dots
-    updateGalleryDots();
-}
-
-/**
- * Change the current image in the gallery
- * @param {number} direction - Direction to move (-1 for previous, 1 for next)
- */
-function changeImage(direction) {
-    if (currentImages.length === 0) return;
-    
-    currentImageIndex += direction;
-    
-    // Wrap around if at beginning or end
-    if (currentImageIndex < 0) {
-        currentImageIndex = currentImages.length - 1;
-    } else if (currentImageIndex >= currentImages.length) {
-        currentImageIndex = 0;
-    }
-    
-    // Update main image
-    const mainImage = document.getElementById('mainImage');
-    if (mainImage) {
-        mainImage.src = currentImages[currentImageIndex];
+    characteristicsContent.innerHTML = `
+        <div class="char-section">
+            <h3>Especificaciones</h3>
+            <div class="char-item">
+                <i class="fas fa-bed"></i>
+                <span>${char.bedrooms} dormitorio${char.bedrooms > 1 ? 's' : ''}</span>
+            </div>
+            <div class="char-item">
+                <i class="fas fa-bath"></i>
+                <span>${char.bathrooms} baño${char.bathrooms > 1 ? 's' : ''}</span>
+            </div>
+            <div class="char-item">
+                <i class="fas fa-users"></i>
+                <span>${char.beds} cama${char.beds > 1 ? 's' : ''}</span>
+            </div>
+            <div class="char-item">
+                <i class="fas fa-ruler-combined"></i>
+                <span>${char.size}</span>
+            </div>
+        </div>
         
-        // Add smooth transition effect
-        mainImage.style.opacity = '0';
-        setTimeout(() => {
-            mainImage.style.opacity = '1';
-        }, 150);
-    }
-    
-    updateGalleryDots();
+        <div class="char-section">
+            <h3>Comodidades</h3>
+            ${amenities.map(amenity => `
+                <div class="char-item">
+                    <i class="${amenity.icon}"></i>
+                    <span>${amenity.text}</span>
+                </div>
+            `).join('')}
+        </div>
+    `;
 }
 
-/**
- * Update gallery dots to reflect current image
- */
-function updateGalleryDots() {
-    const dotsContainer = document.querySelector('.gallery-dots');
-    if (!dotsContainer) return;
-
-    // Limpiar todos los dots
-    dotsContainer.innerHTML = '';
-
-    // Generar nuevos dots según la cantidad de imágenes
-    currentImages.forEach((_, index) => {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        if (index === currentImageIndex) {
-            dot.classList.add('active');
-        }
-        dot.onclick = () => setModalImage(index);
-        dotsContainer.appendChild(dot);
-    });
+// Initialize apartment gallery for apartamento2.html and apartamento3.html
+function initializeApartmentGallery(imageArray) {
+    // Set the image array for modal use (ALL images from the provided array)
+    currentImageArray = [...imageArray];
 }
 
-/**
- * Open the image modal gallery
- * @param {number} index - Optional index of image to display (defaults to current index)
- */
-function openImageModal(index) {
+// Open image modal
+function openImageModal(imageIndex) {
     const modal = document.getElementById('imageModal');
-    if (modal) {
-        // Set the image index if provided
-        if (typeof index === 'number' && index >= 0 && index < currentImages.length) {
-            currentImageIndex = index;
-        }
-        
-        modal.style.display = 'block';
-        
-        // Update modal image to selected image
-        const modalImage = document.getElementById('modalImage');
-        if (modalImage && currentImages.length > 0) {
-            modalImage.src = currentImages[currentImageIndex];
-        }
-        
-        updateGalleryDots();
-        
-        // Prevent body scrolling when modal is open
-        document.body.style.overflow = 'hidden';
-    }
+    const modalImage = document.getElementById('modalImage');
+    
+    if (!modal || !modalImage || !currentImageArray.length) return;
+    
+    currentImageIndex = imageIndex;
+    modalImage.src = currentImageArray[currentImageIndex];
+    modal.style.display = 'block';
+    modalOpen = true;
+    
+    // Create dots for navigation
+    createModalDots();
+    updateActiveDot();
+    
+    // Add keyboard navigation
+    document.addEventListener('keydown', handleModalKeydown);
 }
 
-/**
- * Close the image modal gallery
- */
+// Close image modal
 function closeImageModal() {
     const modal = document.getElementById('imageModal');
     if (modal) {
         modal.style.display = 'none';
-        
-        // Restore body scrolling
-        document.body.style.overflow = 'auto';
+        modalOpen = false;
+        document.removeEventListener('keydown', handleModalKeydown);
     }
 }
 
-/**
- * Change image in modal gallery
- * @param {number} direction - Direction to move (-1 for previous, 1 for next)
- */
+// Change modal image
 function modalChangeImage(direction) {
-    if (currentImages.length === 0) return;
+    if (!currentImageArray.length) return;
     
     currentImageIndex += direction;
     
-    // Wrap around if at beginning or end
-    if (currentImageIndex < 0) {
-        currentImageIndex = currentImages.length - 1;
-    } else if (currentImageIndex >= currentImages.length) {
+    // Loop around
+    if (currentImageIndex >= currentImageArray.length) {
         currentImageIndex = 0;
+    } else if (currentImageIndex < 0) {
+        currentImageIndex = currentImageArray.length - 1;
     }
     
-    // Update modal image
     const modalImage = document.getElementById('modalImage');
     if (modalImage) {
-        modalImage.style.opacity = '0';
-        setTimeout(() => {
-            modalImage.src = currentImages[currentImageIndex];
-            modalImage.style.opacity = '1';
-        }, 150);
+        modalImage.src = currentImageArray[currentImageIndex];
     }
     
-    // Also update main gallery image
-    const mainImage = document.getElementById('mainImage');
-    if (mainImage) {
-        mainImage.src = currentImages[currentImageIndex];
-    }
-    
-    updateGalleryDots();
+    updateActiveDot();
 }
 
-/**
- * Set modal image to specific index
- * @param {number} index - Index of image to display
- */
-function setModalImage(index) {
-    if (index >= 0 && index < currentImages.length) {
+// Create modal navigation dots
+function createModalDots() {
+    const dotsContainer = document.querySelector('.gallery-dots');
+    if (!dotsContainer) return;
+    
+    dotsContainer.innerHTML = '';
+    
+    currentImageArray.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.className = 'gallery-dot';
+        dot.onclick = () => goToModalImage(index);
+        dotsContainer.appendChild(dot);
+    });
+}
+
+// Go to specific modal image
+function goToModalImage(index) {
+    if (index >= 0 && index < currentImageArray.length) {
         currentImageIndex = index;
-        
-        // Update modal image
         const modalImage = document.getElementById('modalImage');
         if (modalImage) {
-            modalImage.style.opacity = '0';
-            setTimeout(() => {
-                modalImage.src = currentImages[currentImageIndex];
-                modalImage.style.opacity = '1';
-            }, 150);
+            modalImage.src = currentImageArray[currentImageIndex];
         }
-        
-        // Also update main gallery image
-        const mainImage = document.getElementById('mainImage');
-        if (mainImage) {
-            mainImage.src = currentImages[currentImageIndex];
-        }
-        
-        updateGalleryDots();
+        updateActiveDot();
     }
 }
 
-/**
- * Open the description modal
- */
+// Update active dot
+function updateActiveDot() {
+    const dots = document.querySelectorAll('.gallery-dot');
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+// Handle modal keyboard navigation
+function handleModalKeydown(event) {
+    if (!modalOpen) return;
+    
+    switch(event.key) {
+        case 'ArrowLeft':
+            event.preventDefault();
+            modalChangeImage(-1);
+            break;
+        case 'ArrowRight':
+            event.preventDefault();
+            modalChangeImage(1);
+            break;
+        case 'Escape':
+            event.preventDefault();
+            closeImageModal();
+            break;
+    }
+}
+
+// Open description modal
 function openDescriptionModal() {
     const modal = document.getElementById('descriptionModal');
     if (modal) {
         modal.style.display = 'block';
-        
-        // Prevent body scrolling when modal is open
-        document.body.style.overflow = 'hidden';
     }
 }
 
-/**
- * Close the description modal
- */
+// Close description modal
 function closeDescriptionModal() {
     const modal = document.getElementById('descriptionModal');
     if (modal) {
         modal.style.display = 'none';
-        
-        // Restore body scrolling
-        document.body.style.overflow = 'auto';
     }
 }
 
-/**
- * Smooth scroll to element
- * @param {string} elementId - ID of element to scroll to
- */
-function scrollToElement(elementId) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+// Close modal when clicking outside
+document.addEventListener('click', function(event) {
+    const imageModal = document.getElementById('imageModal');
+    const descriptionModal = document.getElementById('descriptionModal');
+    
+    if (imageModal && event.target === imageModal) {
+        closeImageModal();
     }
-}
-
-/**
- * Add smooth scroll behavior to anchor links
- */
-document.addEventListener('DOMContentLoaded', function() {
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            scrollToElement(targetId);
-        });
-    });
+    
+    if (descriptionModal && event.target === descriptionModal) {
+        closeDescriptionModal();
+    }
 });
 
-/**
- * Lazy loading for images
- * Improves page performance by loading images when they come into view
- */
-function initializeLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-}
-
-/**
- * Add loading animation to buttons
- * Provides user feedback during form submissions or navigation
- */
-function addButtonLoadingState(buttonElement, loadingText = 'Cargando...') {
-    const originalText = buttonElement.textContent;
-    buttonElement.textContent = loadingText;
-    buttonElement.disabled = true;
-    buttonElement.classList.add('loading');
-    
-    // Return function to restore original state
-    return function() {
-        buttonElement.textContent = originalText;
-        buttonElement.disabled = false;
-        buttonElement.classList.remove('loading');
-    };
-}
-
-/**
- * Form validation helpers
- */
-function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function validatePhone(phone) {
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-    return phoneRegex.test(phone.replace(/\s/g, ''));
-}
-
-/**
- * Accessibility improvements
- */
-function improveAccessibility() {
-    // Add ARIA labels to interactive elements
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => {
-        if (!button.getAttribute('aria-label') && !button.textContent.trim()) {
-            button.setAttribute('aria-label', 'Botón interactivo');
-        }
-    });
-    
-    // Add alt text to images that don't have it
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        if (!img.getAttribute('alt')) {
-            img.setAttribute('alt', 'Imagen del apartamento');
-        }
-    });
-    
-    // Ensure proper heading hierarchy
-    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-    headings.forEach(heading => {
-        if (!heading.id && heading.textContent) {
-            const id = heading.textContent.toLowerCase()
-                .replace(/[^a-z0-9\s]/g, '')
-                .replace(/\s+/g, '-')
-                .substring(0, 50);
-            heading.id = id;
-        }
-    });
-}
-
-/**
- * Performance monitoring
- */
-function trackPagePerformance() {
-    // Monitor page load performance
-    window.addEventListener('load', function() {
-        if ('performance' in window) {
-            const perfData = performance.getEntriesByType('navigation')[0];
-            const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
-            
-            // Log performance data (could be sent to analytics)
-            console.log(`Page load time: ${loadTime}ms`);
-        }
-    });
-}
-
-/**
- * Error handling for image loading
- */
-function setupImageErrorHandling() {
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.addEventListener('error', function() {
-            // Replace broken images with placeholder
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg==';
-            this.alt = 'Imagen no disponible';
-        });
-    });
-}
-
-// Initialize error handling when DOM loads
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    setupImageErrorHandling();
-    improveAccessibility();
-    initializeLazyLoading();
-    trackPagePerformance();
+    initMobileNav();
+    
+    // Initialize specific functionality based on page
+    if (document.getElementById('building-title')) {
+        // We're on apartamento1.html (building page)
+        initializeBuilding();
+    }
 });
 
-// Expose functions globally for inline event handlers
-window.selectFloor = selectFloor;
-window.openImageModal = openImageModal;
-window.closeImageModal = closeImageModal;
-window.modalChangeImage = modalChangeImage;
-window.openDescriptionModal = openDescriptionModal;
-window.closeDescriptionModal = closeDescriptionModal;
-window.changeImage = changeImage;
-window.setModalImage = setModalImage;
+// For apartamento2.html - initialize with apartment2Images array
+if (typeof apartment2Images !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeApartmentGallery(apartment2Images);
+    });
+}
+
+// For apartamento3.html - define and initialize apartment3Images array
+const apartment3Images = [
+    'images/3/main.jpg',
+    'images/3/1.jpg',
+    'images/3/2.jpg',
+    'images/3/3.jpg',
+    'images/3/4.jpg',
+    'images/3/5.jpg',
+    'images/3/6.jpg',
+    'images/3/7.jpg',
+    'images/3/8.jpg',
+    'images/3/9.jpg',
+    'images/3/10.jpg',
+    'images/3/11.jpg',
+    'images/3/12.jpg',
+    'images/3/13.jpg',
+    'images/3/14.jpg',
+    'images/3/15.jpg'
+];
+
+// Initialize apartment3 gallery if on apartamento3.html
+if (window.location.pathname.includes('apartamento3.html')) {
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeApartmentGallery(apartment3Images);
+    });
+}
