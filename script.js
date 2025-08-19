@@ -6,6 +6,164 @@
 // Global variables for image gallery management
 let currentImages = [];
 let currentImageIndex = 0;
+let currentFloor = 1;
+
+// Building data for different floors
+const buildingData = {
+    1: {
+        title: "Edificio en La Ràpita - Piso 1",
+        subtitle: "Primera planta del edificio en Sant Carles de la Ràpita, España",
+        images: [
+            "images/1/main.jpg",
+            "images/1/1.jpg",
+            "images/1/2.jpg",
+            "images/1/3.jpg",
+            "images/1/4.jpg",
+            "images/1/5.jpg"
+        ],
+        characteristics: {
+            specs: [
+                { icon: "fas fa-bed", text: "1 dormitorio" },
+                { icon: "fas fa-bath", text: "1 baño" },
+                { icon: "fas fa-users", text: "2 camas" },
+                { icon: "fas fa-ruler-combined", text: "35 m²" }
+            ],
+            amenities: [
+                { icon: "fas fa-eye", text: "Vista a la calle" },
+                { icon: "fas fa-building", text: "Balcón pequeño" },
+                { icon: "fas fa-utensils", text: "Cocina básica" },
+                { icon: "fas fa-snowflake", text: "Aire acondicionado" }
+            ],
+            restrictions: [
+                { icon: "fas fa-ban", text: "No se permiten mascotas" },
+                { icon: "fas fa-smoking-ban", text: "Prohibido fumar" },
+                { icon: "fas fa-volume-mute", text: "No se permiten fiestas" }
+            ]
+        },
+        description: `
+            <p>Piso 1 - Planta baja con acceso directo. Perfecto para quienes buscan comodidad sin escaleras. Vista directa a la calle principal de La Ràpita.</p>
+            <ul>
+                <li>Acceso directo desde la calle</li>
+                <li>Vista a la vida urbana de la ciudad</li>
+                <li>Balcón con vista a los transeúntes</li>
+            </ul>
+
+            <h3>Distribución Piso 1</h3>
+            <p>Apartamento cómodo y funcional en planta baja. Sala de estar integrada con cocina, dormitorio principal con cama doble y baño completo con ducha.</p>
+            <ul>
+                <li>Sala-comedor con cocina americana</li>
+                <li>1 dormitorio con cama doble</li>
+                <li>1 baño completo con ducha</li>
+            </ul>
+
+            <h3>Características Especiales Piso 1</h3>
+            <p>Ideal para personas con movilidad reducida o que prefieren evitar escaleras. Fácil acceso con equipaje. Conexión directa con la energía de la calle.</p>
+        `
+    },
+    2: {
+        title: "Edificio en La Ràpita - Piso 2",
+        subtitle: "Segunda planta del edificio en Sant Carles de la Ràpita, España",
+        images: [
+            "images/1/main.jpg",
+            "images/1/1.jpg",
+            "images/1/2.jpg",
+            "images/1/3.jpg",
+            "images/1/4.jpg",
+            "images/1/5.jpg"
+        ],
+        characteristics: {
+            specs: [
+                { icon: "fas fa-bed", text: "2 dormitorios" },
+                { icon: "fas fa-bath", text: "2 baños" },
+                { icon: "fas fa-users", text: "4 camas" },
+                { icon: "fas fa-ruler-combined", text: "55 m²" }
+            ],
+            amenities: [
+                { icon: "fas fa-mountain", text: "Vistas elevadas" },
+                { icon: "fas fa-building", text: "Balcón amplio" },
+                { icon: "fas fa-utensils", text: "Cocina completa" },
+                { icon: "fas fa-snowflake", text: "Aire acondicionado doble" }
+            ],
+            restrictions: [
+                { icon: "fas fa-ban", text: "No se permiten mascotas" },
+                { icon: "fas fa-smoking-ban", text: "Prohibido fumar" },
+                { icon: "fas fa-volume-mute", text: "No se permiten fiestas" }
+            ]
+        },
+        description: `
+            <p>Piso 2 - Primera planta elevada. Apartamento más espacioso con 2 dormitorios y 2 baños. Perfecto para familias o grupos de hasta 4 personas.</p>
+            <ul>
+                <li>Vistas mejoradas desde altura</li>
+                <li>Mayor privacidad y menos ruido</li>
+                <li>Balcón más amplio con mejores vistas</li>
+            </ul>
+
+            <h3>Distribución Piso 2</h3>
+            <p>Apartamento familiar con distribución optimizada. Dos dormitorios independientes, cada uno con su propio baño, sala de estar amplia y cocina completamente equipada.</p>
+            <ul>
+                <li>Dormitorio principal con cama doble y baño en suite</li>
+                <li>Dormitorio secundario con dos camas individuales</li>
+                <li>Baño adicional completo</li>
+                <li>Sala-comedor independiente de la cocina</li>
+            </ul>
+
+            <h3>Características Especiales Piso 2</h3>
+            <p>El piso más versátil del edificio. Ideal para familias, grupos de amigos o estancias largas. Doble aire acondicionado para mayor confort en ambos dormitorios.</p>
+        `
+    },
+    3: {
+        title: "Edificio en La Ràpita - Piso 3",
+        subtitle: "Tercera planta del edificio en Sant Carles de la Ràpita, España",
+        images: [
+            "images/1/main.jpg",
+            "images/1/1.jpg",
+            "images/1/2.jpg",
+            "images/1/3.jpg",
+            "images/1/4.jpg",
+            "images/1/5.jpg"
+        ],
+        characteristics: {
+            specs: [
+                { icon: "fas fa-bed", text: "1 dormitorio suite" },
+                { icon: "fas fa-bath", text: "1 baño luxury" },
+                { icon: "fas fa-users", text: "2 camas premium" },
+                { icon: "fas fa-ruler-combined", text: "45 m² + terraza" }
+            ],
+            amenities: [
+                { icon: "fas fa-crown", text: "Vistas panorámicas 360°" },
+                { icon: "fas fa-sun", text: "Terraza privada 20m²" },
+                { icon: "fas fa-utensils", text: "Cocina gourmet" },
+                { icon: "fas fa-hot-tub", text: "Hidromasaje privado" }
+            ],
+            restrictions: [
+                { icon: "fas fa-ban", text: "No se permiten mascotas" },
+                { icon: "fas fa-smoking-ban", text: "Prohibido fumar en interior" },
+                { icon: "fas fa-volume-mute", text: "Horarios de silencio" }
+            ]
+        },
+        description: `
+            <p>Piso 3 - ÁTICO PREMIUM. La joya del edificio con terraza privada, vistas panorámicas y acabados de lujo. Experiencia única en La Ràpita.</p>
+            <ul>
+                <li>Terraza privada de 20m² con mobiliario de exterior</li>
+                <li>Vistas panorámicas de 360° de la ciudad y el mar</li>
+                <li>Hidromasaje privado en la terraza</li>
+                <li>Acabados premium en todo el apartamento</li>
+            </ul>
+
+            <h3>Distribución Piso 3 - Ático</h3>
+            <p>Suite de lujo con dormitorio principal amplio, baño con hidromasaje, cocina gourmet y acceso directo a terraza privada. Diseñado para la máxima experiencia de confort.</p>
+            <ul>
+                <li>Suite principal con vestidor y baño luxury</li>
+                <li>Baño con bañera de hidromasaje y ducha independiente</li>
+                <li>Cocina gourmet con electrodomésticos premium</li>
+                <li>Terraza privada con zona de relax y comedor exterior</li>
+            </ul>
+
+            <h3>Características Especiales Piso 3</h3>
+            <p>Experiencia premium exclusiva. Perfecto para luna de miel, aniversarios o ocasiones especiales. Incluye servicio de limpieza diario y amenities de cortesía.</p>
+        `
+    }
+};
 
 /**
  * Initialize the website when DOM is loaded
@@ -13,6 +171,7 @@ let currentImageIndex = 0;
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeModals();
+    initializeBuilding();
 });
 
 /**
@@ -72,6 +231,156 @@ function initializeModals() {
             modals.forEach(modal => {
                 modal.style.display = 'none';
             });
+        }
+    });
+}
+
+/**
+ * Initialize building data and set up floor navigation
+ */
+function initializeBuilding() {
+    // Initialize with floor 1 data
+    if (buildingData[1]) {
+        currentImages = buildingData[1].images;
+        currentImageIndex = 0;
+        currentFloor = 1;
+    }
+}
+
+/**
+ * Select and display a specific floor
+ * @param {number} floor - Floor number (1, 2, or 3)
+ */
+function selectFloor(floor) {
+    if (!buildingData[floor]) return;
+
+    currentFloor = floor;
+    const floorData = buildingData[floor];
+    
+    // Update current images
+    currentImages = floorData.images;
+    currentImageIndex = 0;
+    
+    // Update page title and subtitle
+    const titleElement = document.getElementById('building-title');
+    const subtitleElement = document.getElementById('building-subtitle');
+    if (titleElement) titleElement.textContent = floorData.title;
+    if (subtitleElement) subtitleElement.textContent = floorData.subtitle;
+    
+    // Update characteristics title
+    const characteristicsTitle = document.getElementById('characteristics-title');
+    if (characteristicsTitle) characteristicsTitle.textContent = `Características - Piso ${floor}`;
+    
+    // Update images in gallery
+    updateGalleryImages();
+    
+    // Update characteristics
+    updateCharacteristics(floorData.characteristics);
+    
+    // Update floor buttons
+    updateFloorButtons(floor);
+    
+    // Update modal title
+    const modalTitle = document.getElementById('modal-title');
+    if (modalTitle) modalTitle.textContent = floorData.title;
+    
+    // Update modal description
+    const modalDescription = document.getElementById('modal-description-content');
+    if (modalDescription) modalDescription.innerHTML = floorData.description;
+}
+
+/**
+ * Update gallery images for current floor
+ */
+function updateGalleryImages() {
+    if (currentImages.length === 0) return;
+    
+    // Update main image
+    const mainImage = document.getElementById('mainImage');
+    if (mainImage) {
+        mainImage.src = currentImages[0];
+        mainImage.style.opacity = '0';
+        setTimeout(() => {
+            mainImage.style.opacity = '1';
+        }, 150);
+    }
+    
+    // Update gallery grid images
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    galleryItems.forEach((img, index) => {
+        if (index < currentImages.length) {
+            img.src = currentImages[index];
+        }
+    });
+    
+    // Update modal image
+    const modalImage = document.getElementById('modalImage');
+    if (modalImage) {
+        modalImage.src = currentImages[0];
+    }
+    
+    // Update dots
+    updateGalleryDots();
+}
+
+/**
+ * Update characteristics section with floor data
+ * @param {Object} characteristics - Floor characteristics data
+ */
+function updateCharacteristics(characteristics) {
+    const characteristicsContent = document.getElementById('characteristics-content');
+    if (!characteristicsContent) return;
+    
+    let html = '';
+    
+    // Specifications section
+    html += '<div class="char-section">';
+    html += '<h3>Especificaciones</h3>';
+    characteristics.specs.forEach(spec => {
+        html += `<div class="char-item">
+            <i class="${spec.icon}"></i>
+            <span>${spec.text}</span>
+        </div>`;
+    });
+    html += '</div>';
+    
+    // Amenities section
+    html += '<div class="char-section">';
+    html += '<h3>Comodidades</h3>';
+    characteristics.amenities.forEach(amenity => {
+        html += `<div class="char-item">
+            <i class="${amenity.icon}"></i>
+            <span>${amenity.text}</span>
+        </div>`;
+    });
+    html += '</div>';
+    
+    // Restrictions section
+    html += '<div class="char-section">';
+    html += '<h3>No Permitido</h3>';
+    characteristics.restrictions.forEach(restriction => {
+        html += `<div class="char-item not-allowed">
+            <i class="${restriction.icon}"></i>
+            <span>${restriction.text}</span>
+        </div>`;
+    });
+    html += '</div>';
+    
+    characteristicsContent.innerHTML = html;
+}
+
+/**
+ * Update floor button active states
+ * @param {number} activeFloor - Currently active floor
+ */
+function updateFloorButtons(activeFloor) {
+    const floorButtons = document.querySelectorAll('.floor-btn');
+    floorButtons.forEach(button => {
+        const floor = parseInt(button.getAttribute('data-floor'));
+        if (floor === activeFloor) {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
         }
     });
 }
@@ -419,110 +728,26 @@ function setupImageErrorHandling() {
     images.forEach(img => {
         img.addEventListener('error', function() {
             // Replace broken images with placeholder
-            this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200"%3E%3Crect width="300" height="200" fill="%23f0f0f0"/%3E%3Ctext x="150" y="100" font-family="Arial" font-size="14" fill="%23999" text-anchor="middle"%3EImagen no disponible%3C/text%3E%3C/svg%3E';
-            this.classList.add('image-error');
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg==';
+            this.alt = 'Imagen no disponible';
         });
     });
 }
 
-/**
- * Initialize all functionality when DOM is ready
- */
+// Initialize error handling when DOM loads
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize core functionality
-    initializeNavigation();
-    initializeModals();
-    
-    // Initialize performance and accessibility features
-    improveAccessibility();
-    trackPagePerformance();
     setupImageErrorHandling();
-    
-    // Initialize lazy loading if supported
-    if ('IntersectionObserver' in window) {
-        initializeLazyLoading();
-    }
-    
-    // Add smooth transitions to all elements
-    document.body.style.transition = 'opacity 0.3s ease';
-    document.body.style.opacity = '1';
+    improveAccessibility();
+    initializeLazyLoading();
+    trackPagePerformance();
 });
 
-/**
- * Keyboard navigation support
- */
-document.addEventListener('keydown', function(event) {
-    // Arrow key navigation for image gallery
-    if (document.getElementById('imageModal').style.display === 'block') {
-        if (event.key === 'ArrowLeft') {
-            modalChangeImage(-1);
-        } else if (event.key === 'ArrowRight') {
-            modalChangeImage(1);
-        }
-    } else {
-        // Arrow key navigation for main gallery
-        const galleryMain = document.querySelector('.gallery-main');
-        if (galleryMain && document.activeElement === galleryMain) {
-            if (event.key === 'ArrowLeft') {
-                changeImage(-1);
-            } else if (event.key === 'ArrowRight') {
-                changeImage(1);
-            }
-        }
-    }
-});
-
-/**
- * Touch/swipe support for mobile devices
- */
-let touchStartX = 0;
-let touchStartY = 0;
-
-document.addEventListener('touchstart', function(event) {
-    touchStartX = event.touches[0].clientX;
-    touchStartY = event.touches[0].clientY;
-});
-
-document.addEventListener('touchmove', function(event) {
-    // Prevent default to avoid scrolling while swiping
-    if (event.target.closest('.gallery-main') || event.target.closest('.modal-gallery')) {
-        event.preventDefault();
-    }
-});
-
-document.addEventListener('touchend', function(event) {
-    if (!touchStartX || !touchStartY) return;
-    
-    const touchEndX = event.changedTouches[0].clientX;
-    const touchEndY = event.changedTouches[0].clientY;
-    
-    const deltaX = touchStartX - touchEndX;
-    const deltaY = touchStartY - touchEndY;
-    
-    // Only process horizontal swipes
-    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
-        const target = event.target.closest('.gallery-main') || event.target.closest('.modal-gallery');
-        
-        if (target) {
-            if (deltaX > 0) {
-                // Swipe left - next image
-                if (document.getElementById('imageModal').style.display === 'block') {
-                    modalChangeImage(1);
-                } else {
-                    changeImage(1);
-                }
-            } else {
-                // Swipe right - previous image
-                if (document.getElementById('imageModal').style.display === 'block') {
-                    modalChangeImage(-1);
-                } else {
-                    changeImage(-1);
-                }
-            }
-        }
-    }
-    
-    // Reset touch coordinates
-    touchStartX = 0;
-    touchStartY = 0;
-});
+// Expose functions globally for inline event handlers
+window.selectFloor = selectFloor;
+window.openImageModal = openImageModal;
+window.closeImageModal = closeImageModal;
+window.modalChangeImage = modalChangeImage;
+window.openDescriptionModal = openDescriptionModal;
+window.closeDescriptionModal = closeDescriptionModal;
+window.changeImage = changeImage;
+window.setModalImage = setModalImage;
